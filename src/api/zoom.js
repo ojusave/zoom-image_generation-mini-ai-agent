@@ -204,7 +204,9 @@ async function sendTextZoomResponse(payload, text, title = 'Information') {
 // New function moved from responseHandlers.js to handle image-only responses
 async function sendImageZoomResponse(payload, imageUrl, promptText) {
   await sendZoomMessage(payload, {
-    'settings': {},
+    'head': {
+      'text': 'GenZoom Bot'
+    },
     'body': [
       {
         'type': 'attachments',

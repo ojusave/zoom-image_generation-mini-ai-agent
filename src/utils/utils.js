@@ -3,17 +3,38 @@ function logError(message, error) {
   console.error(message, error.response ? error.response.data : error);
 }
 
-// Enhanced date utilities
+// Date utilities
 const dateUtils = {
-  getCurrentFormattedDate() {
-    const today = new Date();
-    return today.toLocaleDateString('en-US', { 
-      year: 'numeric', month: 'long', day: 'numeric' 
-    });
+  getCurrentFormattedDate: () => {
+    const now = new Date();
+    const options = { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric',
+      timeZone: 'UTC'
+    };
+    return now.toLocaleDateString('en-US', options);
   },
   
-  getCurrentYear() {
-    return new Date().getFullYear();
+  getCurrentYear: () => {
+    return new Date().getUTCFullYear();
+  },
+  
+  getCurrentMonth: () => {
+    const months = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    return months[new Date().getUTCMonth()];
+  },
+  
+  getCurrentDay: () => {
+    return new Date().getUTCDate();
+  },
+  
+  getFullUTCDateString: () => {
+    const now = new Date();
+    return now.toUTCString();
   },
   
   substituteToday(query) {

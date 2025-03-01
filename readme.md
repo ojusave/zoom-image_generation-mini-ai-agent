@@ -153,16 +153,49 @@ Since Zoom needs a public URL for webhooks, you'll need ngrok:
 ngrok http 4000
 ```
 
-Use the https URL it gives you in your Zoom webhook settings.
 
-## How to Use It
+### Example Usage
 
-In your Zoom chat, you can:
+In your Zoom chat, you can try the following queries to see how the bot responds:
 
-- Ask for info: "Explain quantum physics"
-- Request an image: "Generate an image of a cat" 
-- Ask current facts: "What are the latest AI developments?"
-- Get both: "Tell me about the James Webb telescope and show what it looks like"
+1. **Query**: "What is the capital of France?"
+   - **Response**: The bot will respond with a text message: 
+     ```
+     "The capital of France is Paris."
+     ```
+
+2. **Query**: "What happened in France this week?"
+   - **Response**: The bot will call the Exa API to retrieve the latest news and respond with:
+     ```
+     "This week in France, there were significant protests regarding climate change policies."
+     ```
+
+3. **Query**: "Generate an image of the storming of Bastille."
+   - **Response**: The bot will generate an image using the FLUX API and respond with:
+     ```
+     "Here is the image of the storming of the Bastille:"
+     ```
+  
+
+4. **Query**: "Which questions have I asked so far?"
+   - **Response**: The bot will retrieve the conversation context and respond with:
+     ```
+     "You have asked: 
+     1. What is the capital of France?
+     2. What happened in France this week?
+     3. Generate an image of the storming of Bastille."
+     ```
+
+5. **Query**: "Who is the president of France and how does he look like?"
+   - **Response**: The bot will first retrieve the current information about the president using the Exa API and respond with:
+     ```
+     "The current president of France is Emmanuel Macron."
+     ```
+     Then, it will generate an image of him and respond with:
+     ```
+     "Here is an image of Emmanuel Macron:"
+     ```
+     .
 
 The bot remembers context, so "tell me more about it" works as expected. Words like "portrait" or "imagine" tend to trigger image generation.
 
